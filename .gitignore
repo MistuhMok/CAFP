@@ -1,2 +1,4 @@
 /node_modules
 package-lock.json
+app/src/contracts
+app/node_modules
