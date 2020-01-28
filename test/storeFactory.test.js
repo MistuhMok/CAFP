@@ -67,6 +67,7 @@ contract('Store', function(accounts) {
     });
     it('Owner should be set to the deploying user address', async () => {
       const storeOwner = await storeInstance.owner();
+
       assert.equal(
         storeOwner,
         deployAccount,
