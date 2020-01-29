@@ -37,7 +37,8 @@ contract('Store', function(accounts) {
   beforeEach(async () => {
     sfInstance = await StoreFactory.new();
     await sfInstance.createStore({ from: deployAccount });
-    address0 = await sfInstance.deployedStores(0);
+    address0 = await sfInstance.deployedStores(deployAccount, 0);
+
     storeInstance = await Store.at(address0);
   });
 
@@ -46,9 +47,12 @@ contract('Store', function(accounts) {
       await sfInstance.createStore({ from: deployAccount });
       await sfInstance.createStore({ from: deployAccount });
 
-      const address1 = await sfInstance.deployedStores(1);
-      const address2 = await sfInstance.deployedStores(2);
-      const deployedStores = await sfInstance.getDeployedStores();
+      const address1 = await sfInstance.deployedStores(deployAccount, 1);
+      const address2 = await sfInstance.deployedStores(deployAccount, 2);
+      const deployedStores = await sfInstance.getDeployedStores({
+        from: deployAccount,
+      });
+
       assert.equal(
         address0,
         deployedStores[0],

@@ -1,12 +1,44 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
 import * as serviceWorker from './serviceWorker';
+import { Drizzle } from 'drizzle';
+import { DrizzleContext } from 'drizzle-react';
+import './App.css';
+import store from './middleware';
+import { BrowserRouter } from 'react-router-dom';
+import options from './drizzleOptions';
+import Routes from './Routes';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+const drizzle = new Drizzle(options, store);
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
+ReactDOM.render(
+  <DrizzleContext.Provider drizzle={drizzle}>
+    <BrowserRouter>
+      <DrizzleContext.Consumer>
+        {drizzleContext => {
+          const { drizzle, drizzleState, initialized } = drizzleContext;
+
+          if (!initialized) {
+            return (
+              <div
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  flexDirection: 'column',
+                }}
+              >
+                <h1>Loading...</h1>
+              </div>
+            );
+          }
+          return <Routes drizzle={drizzle} drizzleState={drizzleState} />;
+        }}
+      </DrizzleContext.Consumer>
+    </BrowserRouter>
+  </DrizzleContext.Provider>,
+
+  document.getElementById('root')
+);
+
 serviceWorker.unregister();

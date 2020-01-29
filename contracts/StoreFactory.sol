@@ -2,16 +2,17 @@ pragma solidity ^0.6.1;
 import './Store.sol';
 
 contract StoreFactory {
-    address[] public deployedStores;
-    mapping(address => bool) public storeOwners;
+    mapping(address => address[]) public deployedStores;
+
+    event LogCreateStore(address indexed creator, address indexed storeAddress);
 
     function createStore() public {
         address newStore = address(new Store(msg.sender));
-        deployedStores.push(newStore);
-        storeOwners[msg.sender] = true;
+        deployedStores[msg.sender].push(newStore);
+        emit LogCreateStore(msg.sender, newStore);
     }
 
     function getDeployedStores() public view returns (address[] memory) {
-        return deployedStores;
+        return deployedStores[msg.sender];
     }
 }

@@ -1,7 +1,9 @@
 # CAFP
+
 Consensys Academy Final Project
 
 [] Record your screen as you demo the application, showing and explaining how you included the required components.
+
 1. Project includes a README.md that explains the project
 
 ✔️ 2. The project is a Truffle project that allows you to easily compile, migrate and test the provided Solidity contracts
@@ -9,19 +11,23 @@ Consensys Academy Final Project
 3. Project is commented as outline in the documentation
 
 ✔️ 4. At least one contract uses a library or inherits from another contract
+
 - Uses SafeMath library and inherits Pausable contract
 
 ✔️ 5. I can run the app on a development server locally for testing/grading (or connecting to Rinkeby/Ropsten if required)
 
-6. The app displays the current ethereum account
+✔️ 6. The app displays the current ethereum account
+
 7. I can sign transactions using Metamask (or another web3 provider)
 8. The app interface reflects updates to the contract state
 
 ✔️ 9. 5 tests written in Javascript
+
 - [x] Tests are properly structured
 - [x] All tests pass
 
 ✔️ 10. At least one of the contracts implements a circuit breaker / emergency stop pattern.
+
 - Purchasing items is pausable by the store owner
 
 ✔️ 11. Project includes a file called design_pattern_decisions.md that adequately describes the design patterns implemented in the project
@@ -30,8 +36,8 @@ Consensys Academy Final Project
 
 13. Project includes a file called deployed_addresses.txt that describes where the deployed testnet contracts live (which testnet and address)
 
-Stretch goals
----
+## Stretch goals
+
 14. Project uses IPFS
 15. The project uses an upgradable design pattern for the smart contracts
 16. At least one contract is written in Vyper or LLL
