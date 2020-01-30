@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
 
-export default class ManageStore extends Component {
+class ManageStore extends Component {
   //Click should open the store
   constructor() {
     super();
@@ -20,9 +21,18 @@ export default class ManageStore extends Component {
       <div>
         <h2>Manage Stores</h2>
         {deployedStores.length
-          ? deployedStores.map(store => <div>Store Address: {store}</div>)
+          ? deployedStores.map(store => (
+              <div
+                key={store}
+                onClick={() => this.props.history.push(`/store/${store}`)}
+              >
+                Store Address: {store}
+              </div>
+            ))
           : `You don't own any stores`}
       </div>
     );
   }
 }
+
+export default withRouter(ManageStore);

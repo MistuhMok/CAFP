@@ -5,7 +5,7 @@ export default class AddItemForm extends Component {
   constructor() {
     super();
     this.state = {
-      currentAddress: '',
+      userAddress: '',
       name: '',
       imageURL: '',
       description: '',
@@ -15,34 +15,26 @@ export default class AddItemForm extends Component {
   }
 
   async componentDidMount() {
-    const currentAddress = await this.props.drizzle.web3.eth.getAccounts();
-    this.setState({
-      currentAddress: currentAddress[0],
-    });
+    this.setState({ userAddress: this.props.userAddress });
   }
 
   handleInputChange = event => {
-    this.setState(
-      {
-        [event.target.name]: event.target.value,
-      },
-      console.log(this.state)
-    );
+    this.setState({ [event.target.name]: event.target.value });
   };
 
   handleSubmit = async event => {
     event.preventDefault();
-    // await this.props.drizzle.contracts.Store.methods
-    //   .addItem(
-    //     this.state.name,
-    //     this.state.imageURL,
-    //     this.state.description,
-    //     this.state.inventory,
-    //     this.state.price
-    //   )
-    //   .send({ from: this.state.currentAddress });
+    await this.props.drizzle.contracts.Store.methods
+      .addItem(
+        this.state.name,
+        this.state.imageURL,
+        this.state.description,
+        this.state.inventory,
+        this.state.price
+      )
+      .send({ from: this.state.userAddress });
 
-    console.log(this.props.drizzle.contracts);
+    this.props.fetchItems();
   };
 
   render() {

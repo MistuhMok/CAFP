@@ -1,6 +1,4 @@
 import React from 'react';
-import Web3 from 'web3';
-import Store from './contracts/Store.json';
 import { Button } from 'semantic-ui-react';
 import { withRouter } from 'react-router-dom';
 
@@ -13,10 +11,7 @@ class Navbar extends React.Component {
   async componentDidMount() {
     const { drizzle } = this.props;
     const currAccount = (await drizzle.web3.eth.getAccounts())[0];
-    if (!this.state.currAccount)
-      this.setState({
-        currAccount,
-      });
+    if (!this.state.currAccount) this.setState({ currAccount });
 
     await this.checkforDeployedStores();
   }
@@ -27,24 +22,7 @@ class Navbar extends React.Component {
       .getDeployedStores()
       .call({ from: this.state.currAccount });
 
-    //Adds all the stores that the individual created to drizzle
-    if (deployedStores.length) {
-      this.setState({ deployedStores });
-
-      for (let i = 0; i < deployedStores.length; i++) {
-        let web3 = new Web3(Web3.givenProvider);
-        let contractName = `Store${i}`;
-
-        let web3Contract = new web3.eth.Contract(
-          Store['abi'],
-          deployedStores[i]
-        );
-        let contractConfig = { contractName, web3Contract };
-        let events = ['LogItemAdded'];
-        drizzle.addContract(contractConfig, events);
-      }
-      console.log('added to drizzle!');
-    }
+    if (deployedStores.length) this.setState({ deployedStores });
   };
 
   createStore = async () => {
@@ -52,11 +30,10 @@ class Navbar extends React.Component {
       .createStore()
       .send({ from: this.state.currAccount });
     this.checkforDeployedStores();
-    //Should change to only check for the last one and add that to contracts
   };
 
   render() {
-    console.log(this.props, ' STATE');
+    // console.log(this.props, ' STATE');
     // const { drizzle, drizzleState } = this.props;
     const { deployedStores } = this.state;
     return (

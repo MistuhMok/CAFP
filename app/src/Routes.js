@@ -4,6 +4,7 @@ import React from 'react';
 import Navbar from './Navbar';
 import SplashPage from './SplashPage';
 import ManageStore from './ManageStore';
+import StorePage from './StorePage';
 
 export default function Routes(props) {
   const { drizzle, drizzleState } = props;
@@ -32,6 +33,19 @@ export default function Routes(props) {
           render={props => {
             return (
               <ManageStore
+                drizzle={drizzle}
+                drizzleState={drizzleState}
+                props={props}
+              />
+            );
+          }}
+        />
+        <Route
+          exact
+          path="/store/:address"
+          render={props => {
+            return (
+              <StorePage
                 drizzle={drizzle}
                 drizzleState={drizzleState}
                 props={props}

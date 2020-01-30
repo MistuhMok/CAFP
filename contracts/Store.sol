@@ -4,7 +4,7 @@ import './SafeMath.sol';
 import './Pausable.sol';
 
 contract Store is Pausable {
-    uint256 itemID;
+    uint256 public itemID;
     mapping(uint256 => Item) public items;
 
     struct Item {
