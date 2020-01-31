@@ -32,6 +32,9 @@ contract Pausable {
         owner = creator;
     }
 
+    /**
+     * @dev Modifier that throws an error if the msg.sender is not the owner.
+     */
     modifier onlyOwner() {
         require(msg.sender == owner, 'You are not the owner of the store!');
         _;

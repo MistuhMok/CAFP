@@ -1,8 +1,7 @@
 import React from 'react';
 import Web3 from 'web3';
 import Store from './contracts/Store.json';
-import { Button, Label, Icon, Card } from 'semantic-ui-react';
-import { withRouter } from 'react-router-dom';
+import { Label, Icon, Card } from 'semantic-ui-react';
 import AddItemForm from './AddItemForm.js';
 import SingleItem from './SingleItem.js';
 
@@ -90,7 +89,7 @@ class StorePage extends React.Component {
   };
 
   render() {
-    console.log(this.state, ' STATE');
+    // console.log(this.state, ' STATE');
     const {
       userAddress,
       storeAddress,

@@ -8,7 +8,7 @@ Consensys Academy Final Project
 
 ✔️ 2. The project is a Truffle project that allows you to easily compile, migrate and test the provided Solidity contracts
 
-3. Project is commented as outline in the documentation
+✔️ 3. Project is commented as outline in the documentation
 
 ✔️ 4. At least one contract uses a library or inherits from another contract
 
@@ -18,8 +18,9 @@ Consensys Academy Final Project
 
 ✔️ 6. The app displays the current ethereum account
 
-7. I can sign transactions using Metamask (or another web3 provider)
-8. The app interface reflects updates to the contract state
+✔️ 7. I can sign transactions using Metamask (or another web3 provider)
+
+✔️ 8. The app interface reflects updates to the contract state
 
 ✔️ 9. 5 tests written in Javascript
 

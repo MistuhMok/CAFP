@@ -3,10 +3,19 @@ pragma solidity ^0.6.1;
 import './SafeMath.sol';
 import './Pausable.sol';
 
+/*
+* @dev The Store contract keeps track of the details and sales of all the items in the store
+*/
 contract Store is Pausable {
+    /*
+    * @dev Variables to keep track of the itemIDs and store all the item info
+    */
     uint256 public itemID;
     mapping(uint256 => Item) public items;
 
+    /*
+    * @dev Store struct stores Item details and keeps track amount sold and who a mapping of who bought it
+    */
     struct Item {
         string name;
         string imageURL;
@@ -17,6 +26,11 @@ contract Store is Pausable {
         mapping(address => uint256) buyers;
     }
 
+    /*
+    * @dev Logging events provide information about the status of the function
+    *   LogItemAdded provides information of an item that was just added
+    *   LogItemBought provides information about the buyer and the amount purchased
+    */
     event LogItemAdded(
         string name,
         string imageURL,
@@ -26,10 +40,18 @@ contract Store is Pausable {
         uint256 itemID
     );
     event LogItemBought(address buyer, uint256 itemID, uint256 numItems);
-    event LogEndSale(address owner, uint256 balance, uint256 eventId);
 
+    //Passes the address of the creator to the Pausable contract
     constructor(address payable creator) public Pausable(creator) {}
 
+    /*
+    * @dev Adds item to the store and can only be run by the store owner
+    * @param Name of the item
+    * @param URL of an image of the item
+    * @param Description of the item
+    * @param Amount of the item that is stocked
+    * @param Price of the item
+    */
     function addItem(
         string memory name,
         string memory imageURL,
@@ -57,6 +79,11 @@ contract Store is Pausable {
         return itemID++;
     }
 
+    /*
+    * @dev Fetch item info
+    * @param ID of the item
+    * @return The item info
+    */
     function itemInfo(uint256 itemId)
         public
         view
@@ -79,6 +106,11 @@ contract Store is Pausable {
         );
     }
 
+    /*
+    * @dev Buys an Item and sends the money directly to the store owner
+    * @param ID of the item
+    * @param Amount of items to be bought
+    */
     function buyItems(uint256 itemId, uint256 numItems)
         public
         payable
@@ -102,6 +134,11 @@ contract Store is Pausable {
         emit LogItemBought(msg.sender, itemId, numItems);
     }
 
+    /*
+    * @dev Fetch how many of a particular item was bought
+    * @param ID of the item
+    * @return The amount of item owned by the msg.sender
+    */
     function getBuyerNumItems(uint256 itemId)
         public
         view
