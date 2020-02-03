@@ -33,8 +33,6 @@ class Navbar extends React.Component {
   };
 
   render() {
-    // console.log(this.props, ' STATE');
-    // const { drizzle, drizzleState } = this.props;
     const { deployedStores } = this.state;
     return (
       <div>

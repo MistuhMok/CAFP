@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 
 class ManageStore extends Component {
-  //Click should open the store
   constructor() {
     super();
     this.state = { deployedStores: [] };

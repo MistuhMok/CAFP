@@ -2,8 +2,6 @@ import React from 'react';
 import { Button, Segment, Form } from 'semantic-ui-react';
 import { withRouter } from 'react-router-dom';
 
-// import SearchBar from "./SearchBar";
-
 class SplashPage extends React.Component {
   state = { address: '' };
 
@@ -12,7 +10,6 @@ class SplashPage extends React.Component {
   };
 
   render() {
-    // const { drizzle, drizzleState, props } = this.props;
     return (
       <Segment placeholder>
         <Form

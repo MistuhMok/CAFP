@@ -75,6 +75,7 @@ class StorePage extends React.Component {
       .getBuyerNumItems(index)
       .call();
     const itemInfo = this.state.itemInfo;
+    console.log(index, owned, ' OWNED');
     const updatedItem = {
       name: result.name,
       imageURL: result.imageURL,
@@ -89,7 +90,6 @@ class StorePage extends React.Component {
   };
 
   render() {
-    // console.log(this.state, ' STATE');
     const {
       userAddress,
       storeAddress,

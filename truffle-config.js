@@ -19,11 +19,10 @@ const path = require('path');
  *
  */
 
-// const HDWalletProvider = require('truffle-hdwallet-provider');
-// const infuraKey = "fj4jll3k.....";
-//
+// Uncomment to deploy
 // const fs = require('fs');
-// const mnemonic = fs.readFileSync(".secret").toString().trim();
+// const HDWalletProvider = require('truffle-hdwallet-provider');
+// const secrets = JSON.parse(fs.readFileSync('secrets.json', 'utf8'));
 
 module.exports = {
   contracts_build_directory: path.join(__dirname, 'app/src/contracts'),
@@ -71,12 +70,15 @@ module.exports = {
     // skipDryRun: true     // Skip dry run before migrations? (default: false for public nets )
     // },
 
-    // Useful for private networks
-    // private: {
-    // provider: () => new HDWalletProvider(mnemonic, `https://network.io`),
-    // network_id: 2111,   // This network is yours, in the cloud.
-    // production: true    // Treats this network as if it was a public net. (default: false)
-    // }
+    //***Uncomment to deploy***
+    // rinkeby: {
+    //   provider: () =>
+    //     new HDWalletProvider(
+    //       secrets.mnemonic,
+    //       `https://rinkeby.infura.io/v3/${secrets.infuraApiKey}`
+    //     ),
+    //   network_id: 4, // This network is yours, in the cloud.
+    // },
   },
 
   // Set default mocha options here, use special reporters etc.

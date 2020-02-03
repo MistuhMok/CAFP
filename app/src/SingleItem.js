@@ -29,6 +29,8 @@ export default class SingleItem extends Component {
       price,
       owned,
     } = this.props.item;
+
+    console.log(owned, this.state.userAddress);
     return (
       <Card>
         <Card.Content>
