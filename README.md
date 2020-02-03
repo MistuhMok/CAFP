@@ -1,7 +1,7 @@
 # CAFP
 
 Consensys Academy Final Project
-This is an online marketplace that operates on the blockchain. Any user can create a store and a created store address is searchable through homepage. An individual can create any number of stores and can add items to his/her own stores and visit each store through their manage stores tab. A User can purchase items from a store if there are enough items in stock and the user has enough currency to purchase it. The balance is transferred directly to the store owner and the owned and inventory count will update accordingly.
+This is an online marketplace that operates on the blockchain. Any user can create a store and a created store address is searchable through homepage. An individual can create any number of stores and can add items to his/her own stores and visit each store through their manage stores tab. A User can purchase items from a store if there are enough items in stock and the user has enough currency to purchase it. The balance is transferred directly to the store owner and the owned and inventory count will update accordingly. Live demo can be viewed here: (https://youtu.be/ftT832okwsY)
 
 # More Information
 
@@ -45,7 +45,7 @@ There are 10 tests and they take ~7s
 
 # Checklist
 
-[x] Record your screen as you demo the application, showing and explaining how you included the required components. (https://youtu.be/ftT832okwsY)
+- [x] Record your screen as you demo the application, showing and explaining how you included the required components. (https://youtu.be/ftT832okwsY)
 
 ✔️ 1. Project includes a README.md that explains the project
 
